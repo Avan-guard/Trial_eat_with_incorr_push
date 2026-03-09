@@ -99,8 +99,15 @@
 
     /* Блоки — высота 1200px */
     .block {
-      height: 1000px;
       width: 100%;
+    }
+
+   .block-1 {
+      height: 555px; /* Уменьшенная высота для первого блока */
+    }
+
+    .block-2, .block-3, .block-4, .block-5 {
+      height: 1000px; /* Остальные блоки остаются как были */
     }
 
     /* Блок 1 */
@@ -601,6 +608,7 @@
   justify-content: center;
   cursor: pointer;
   transition: 0.3s;
+  padding-bottom: 5px; 
 }
 
 .carousel-btn:hover {
