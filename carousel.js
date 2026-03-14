@@ -1,6 +1,6 @@
 const supabaseUrl = 'https://ffljujqajzuomxmcaflg.supabase.co';  
 const supabaseKey = 'sb_publishable_KPc0EGIzWzO5PAvdToaqdA_VZ_Jg3gc';    
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabaseClient = createClient(supabaseUrl, supabaseKey);
 
 let carouselData = [];
 let currentIndex = 0;
@@ -9,10 +9,10 @@ const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 let interval;
 
-// Загружаем данные из Supabase
+
 async function loadCarouselData() {
   try {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from('carousel_items')
       .select('*')
       .eq('is_active', true)
@@ -21,7 +21,7 @@ async function loadCarouselData() {
     if (error) throw error;
     
     if (data && data.length > 0) {
-      console.log('Данные загружены:', data); // для проверки
+      console.log('Данные загружены:', data); 
       carouselData = data;
     } else {
       console.log('Нет данных, используем локальные');
@@ -50,7 +50,7 @@ async function loadCarouselData() {
     renderCarousel();
   } catch (error) {
     console.error('Ошибка загрузки:', error);
-    // При ошибке используем локальные данные
+    
     carouselData = [
       {
         image_url: "images/v368_430.png",
@@ -125,10 +125,10 @@ function stopAutoPlay() {
   clearInterval(interval);
 }
 
-// Инициализация после загрузки страницы
+
 document.addEventListener('DOMContentLoaded', function() {
   if (prevBtn && nextBtn && track) {
-    loadCarouselData(); // загружаем данные
+    loadCarouselData(); 
     
     prevBtn.addEventListener('click', () => {
       stopAutoPlay();
