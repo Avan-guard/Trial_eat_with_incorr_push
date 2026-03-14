@@ -1,5 +1,6 @@
 const supabaseUrl = 'https://ffljujqajzuomxmcaflg.supabase.co';  
 const supabaseKey = 'sb_publishable_KPc0EGIzWzO5PAvdToaqdA_VZ_Jg3gc';    
+const supabaseClient = createClient(supabaseUrl, supabaseKey);
 
 let carouselData = [];
 let currentIndex = 0;
