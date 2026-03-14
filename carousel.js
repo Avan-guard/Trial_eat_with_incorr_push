@@ -1,35 +1,82 @@
-const carouselData = [
-  {
-    imgSrc: "images/v368_430.png",
-    alt: "partner1",
-    title: "Tacoland",
-    rating: "5.0",
-    reviews: 203
-  },
-  {
-    imgSrc: "images/v368_428.png",
-    alt: "partner2",
-    title: "Tokyo City",
-    rating: "4.9",
-    reviews: 188
-  },
-  {
-    imgSrc: "images/v368_435.png",
-    alt: "partner3",
-    title: "Зодиак",
-    rating: "4.8",
-    reviews: 175
-  }
-];
+const supabaseUrl = 'https://ffljujqajzuomxmcaflg.supabase.co';  
+const supabaseKey = 'sb_publishable_KPc0EGIzWzO5PAvdToaqdA_VZ_Jg3gc';    
+const supabase = createClient(supabaseUrl, supabaseKey);
 
+let carouselData = [];
 let currentIndex = 0;
 const track = document.getElementById('carouselTrack');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 let interval;
 
+// Загружаем данные из Supabase
+async function loadCarouselData() {
+  try {
+    const { data, error } = await supabase
+      .from('carousel_items')
+      .select('*')
+      .eq('is_active', true)
+      .order('order', { ascending: true });
+    
+    if (error) throw error;
+    
+    if (data && data.length > 0) {
+      console.log('Данные загружены:', data); // для проверки
+      carouselData = data;
+    } else {
+      console.log('Нет данных, используем локальные');
+      // Запасной вариант
+      carouselData = [
+        {
+          image_url: "images/v368_430.png",
+          title: "Tacoland",
+          rating: "5.0",
+          reviews: 203
+        },
+        {
+          image_url: "images/v368_428.png",
+          title: "Tokyo City",
+          rating: "4.9",
+          reviews: 188
+        },
+        {
+          image_url: "images/v368_435.png",
+          title: "Зодиак",
+          rating: "4.8",
+          reviews: 175
+        }
+      ];
+    }
+    renderCarousel();
+  } catch (error) {
+    console.error('Ошибка загрузки:', error);
+    // При ошибке используем локальные данные
+    carouselData = [
+      {
+        image_url: "images/v368_430.png",
+        title: "Tacoland",
+        rating: "5.0",
+        reviews: 203
+      },
+      {
+        image_url: "images/v368_428.png",
+        title: "Tokyo City",
+        rating: "4.9",
+        reviews: 188
+      },
+      {
+        image_url: "images/v368_435.png",
+        title: "Зодиак",
+        rating: "4.8",
+        reviews: 175
+      }
+    ];
+    renderCarousel();
+  }
+}
+
 function renderCarousel() {
-  if (!track) return;
+  if (!track || carouselData.length === 0) return;
   
   track.innerHTML = '';
   
@@ -48,7 +95,7 @@ function renderCarousel() {
     slideDiv.className = `carousel-slide ${slide.isActive ? 'active' : ''}`;
     
     slideDiv.innerHTML = `
-      <img src="${data.imgSrc}" alt="${data.alt}" width="${slide.isActive ? 560 : 240}" height="${slide.isActive ? 360 : 240}">
+      <img src="${data.image_url}" alt="${data.title}" width="${slide.isActive ? 560 : 240}" height="${slide.isActive ? 360 : 240}">
       <div class="slide-caption">
         <span>${data.title}</span>
         <span>★ ${data.rating} (${data.reviews})</span>
@@ -81,6 +128,8 @@ function stopAutoPlay() {
 // Инициализация после загрузки страницы
 document.addEventListener('DOMContentLoaded', function() {
   if (prevBtn && nextBtn && track) {
+    loadCarouselData(); // загружаем данные
+    
     prevBtn.addEventListener('click', () => {
       stopAutoPlay();
       prevSlide();
@@ -96,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
     track.addEventListener('mouseenter', stopAutoPlay);
     track.addEventListener('mouseleave', startAutoPlay);
 
-    renderCarousel();
     startAutoPlay();
   }
 });
