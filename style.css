@@ -112,10 +112,10 @@ body {
   background-color: #ffffff; 
 }
 
-.block-3, .block-4 {
+.block-3 {
   height: 1000px;
 }
-.block-2, .block-5 {
+.block-2, block-4, .block-5 {
   height: auto;
 }
 
