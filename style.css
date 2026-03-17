@@ -273,9 +273,8 @@ body {
 
 .bonus-action-wrapper {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 30px;
+  justify-content: flex-end
+  
 }
 
 .purple-rect {
