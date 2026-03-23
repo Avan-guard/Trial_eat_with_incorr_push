@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Eat! | Доставка еды в Санкт-Петербурге</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Onest:wght@100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="mobile-adaptive.css">
-
 </head>
 <body>
   <header class="header">
@@ -31,7 +30,7 @@
   </header>
 
   <main>
-    
+    <!-- Блок 1 -->
     <section class="block block-1 block1-with-bg">
       <div class="container block1-content">
         <div class="title">EAT!</div>
@@ -40,7 +39,7 @@
       </div>
     </section>
 
-    
+    <!-- Блок 2 -->
     <section class="block block-2">
       <div class="container">
         <div class="block2-header">
@@ -57,12 +56,11 @@
       </div>
     </section>
 
-    
+    <!-- Блок 3 -->
     <section class="block block-3">
       <div class="container">
         <div class="block3-title">Как работает приложение?</div>
 
-        
         <div class="cards-row">
           <div class="card">
             <div class="card-number">01</div>
@@ -93,7 +91,7 @@
       </div>
     </section>
 
-    
+    <!-- Блок 4 -->
     <section class="block block-4">
       <div class="container">
         <div class="block4-title">Наши партнеры:</div>
@@ -124,12 +122,10 @@
           <div class="carousel-track" id="carouselTrack"></div>
           <button class="carousel-btn" id="nextBtn">→</button>
         </div>
-        <script src="supabase.js"></script>
-        <script src="carousel.js"></script>
       </div>
     </section>
 
-    
+    <!-- Блок 5 -->
     <section class="block block-5 clearfix">
       <div class="container">
         <div class="block5-left">
@@ -137,19 +133,42 @@
           <h3>Скачайте приложение <span>Eat!</span></h3>
           <div class="block5-bonus">За регистрацию в приложении мы дарим <span>300 баллов!</span></div>
           <div class="two-photos-horizontal">
-          <img src="images/Group 622.png" alt="apple" class="store-photo-large">
-          <img src="images/Group 621.png" alt="adroid" class="store-photo-large">
-          </div> 
+            <img src="images/Group 622.png" alt="apple" class="store-photo-large">
+            <img src="images/Group 621.png" alt="adroid" class="store-photo-large">
+          </div>
         </div>
         <div class="block5-right">
           <img src="images/Group 591.png" alt="heart_black" class="mascot-bottom">
-          <img src="images/Mock.png" alt="tel_large"class="phone-mock-right">
+          <img src="images/Mock.png" alt="tel_large" class="phone-mock-right">
+        </div>
+      </div>
+    </section>
+
+    <!-- НОВЫЙ БЛОК: ФОРМА ОБРАТНОЙ СВЯЗИ (перед футером) -->
+    <section class="feedback-section">
+      <div class="feedback-container">
+        <div class="feedback-header">
+          <h2>Стань нашим партнером, заполни форму</h2>
+        </div>
+        <div class="feedback-form-wrapper">
+          <form id="partnerForm" class="form-grid">
+            <div class="input-group">
+              <label for="name">Ваше заведение</label>
+              <input type="text" id="name" name="name" placeholder="Ваше кафе" required>
+            </div>
+            <div class="input-group">
+              <label for="phone">Контактная почта</label>
+              <input type="tel" id="phone" name="phone" placeholder="eat@gmail.com" required>
+            </div>
+            <div class="form-footer">
+              <button type="submit" class="submit-btn">Отправить заявку</button>
+            </div>
+          </form>
         </div>
       </div>
     </section>
   </main>
 
-  
   <footer class="footer">
     <div class="container footer-container">
       <div class="footer-left">
@@ -169,5 +188,30 @@
       <div class="footer-copyright">©Eat 2026</div>
     </div>
   </footer>
+
+  <!-- Скрипты -->
+  <script src="supabase.js"></script>
+  <script src="carousel.js"></script>
+  <script>
+    // Обработка отправки формы
+    const form = document.getElementById('partnerForm');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        
+        if (!name || !phone) {
+          alert('Пожалуйста, заполните все поля');
+          return;
+        }
+        
+        // Имитация отправки данных
+        console.log('Форма отправлена:', { name, phone });
+        alert(`Спасибо, ${name}! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.`);
+        form.reset();
+      });
+    }
+  </script>
 </body>
 </html>
