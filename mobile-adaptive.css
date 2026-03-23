@@ -3,7 +3,6 @@
     padding: 0 20px;
   }
 
-
   .header {
     height: auto;
     padding: 15px 0;
@@ -36,7 +35,6 @@
     height: 36px;
   }
 
-
   .block-1,
   .block-2,
   .block-3,
@@ -45,7 +43,6 @@
     height: auto;
     padding: 40px 0;
   }
-
 
   .block-1 {
     display: flex;
@@ -79,7 +76,6 @@
     max-width: 90%;
   }
 
-  /* Block 2 */
   .block-2 {
     text-align: center;
   }
@@ -118,7 +114,6 @@
     max-width: 280px;
     margin: 0 auto;
     order: 2;
-    content: url('images/Mockuper.png');
   }
 
   .mascot-area {
@@ -138,7 +133,6 @@
     max-width: 100%;
     padding: 15px;
   }
-
 
   .block-3 {
     text-align: center;
@@ -167,34 +161,34 @@
   }
 
   .bonus-line {
-  font-size: 14px;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 20px;
-  color: var(--primary-purple, #6635E4); 
-  font-weight: 500;
-  word-break: break-word;
-}
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-purple, #6635E4);
+    font-weight: 500;
+    word-break: break-word;
+  }
 
-.bonus-action-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
+  .bonus-action-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 
-.two-photos {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
+  .two-photos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
 
-.small-photo {
-  width: 100%;
-  max-width: 250px;
-  height: auto;
-}
+  .small-photo {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+  }
 
   .purple-rect {
     font-size: 20px;
@@ -211,9 +205,6 @@
     display: block;
   }
 
-  
-
-  /* Block 4 */
   .block-4 {
     text-align: center;
   }
@@ -265,11 +256,6 @@
     margin-right: 5px;
   }
 
-  .partner-card .partner-time {
-    opacity: 0.9;
-  }
-
-
   .carousel-container {
     margin-top: 20px;
     margin-bottom: 40px;
@@ -317,14 +303,6 @@
     align-items: center;
   }
 
-  /*.carousel-slide:first-child {
-    margin-left: 15%;
-  }
-
-  .carousel-slide:last-child {
-    margin-right: 15%;
-  }*/
-
   .carousel-slide.active {
     opacity: 1;
     z-index: 10;
@@ -358,7 +336,6 @@
     width: 100%;
     max-width: 280px;
   }
-
 
   .block-5 {
     text-align: center;
@@ -443,7 +420,6 @@
     left: auto;
   }
 
- 
   .footer {
     height: auto;
     padding: 20px 0;
@@ -455,8 +431,7 @@
     gap: 12px;
     text-align: center;
     align-items: center;
-    padding: 10px 20px;
-    padding-bottom: 40px; 
+    padding: 10px 20px 40px 20px;
     position: relative;
   }
 
@@ -504,82 +479,34 @@
   }
 }
 
-
 @media (max-width: 480px) {
-  .title {
-    font-size: 48px;
-  }
-
-  .block1-sub {
-    font-size: 16px;
-  }
-
-  .block1-banner {
-    font-size: 14px;
-  }
-
-  .partner-card {
-    flex: 0 0 240px;
-  }
-
-  .carousel-slide {
-    flex: 0 0 80%;
-  }
-
-  /*.carousel-slide:first-child {
-    margin-left: 10%;
-  }
-
-  .carousel-slide:last-child {
-    margin-right: 10%;
-  }*/
-
-  .carousel-slide img {
-    max-width: 250px;  /* Еще меньше для маленьких экранов */
-  }
-
-  .active img {
-    max-width: 280px;
-  }
-
-  .slide-caption {
-    max-width: 250px;
-    font-size: 12px;
-  }
-
-  .card {
-    max-width: 280px;
-  }
-
-  .two-photos {
-    max-width: 280px;
-  }
-
-  .small-photo {
-    max-width: 260px;
-  }
-
-  .two-photos-horizontal {
-    max-width: 240px;
-  }
-
-  .store-photo-large {
-    width: 110px;
-  }
-
-  .phone-mock-right {
-    max-width: 180px;
-  }
-
-  .mascot-bottom {
-    height: 150px;
-  }
-
   .footer {
-    padding: 15px 0;
+    padding: 10px 0;
   }
 
   .footer-container {
     gap: 8px;
+    padding: 10px 20px 30px 20px;
+  }
+
+  .footer-left .logo-photo {
+    width: 35px;
+  }
+
+  .footer-left .site-name {
+    font-size: 16px;
+  }
+
+  .footer-center a {
+    font-size: 12px;
+  }
+
+  .footer-right a {
+    font-size: 10px;
+  }
+
+  .footer-copyright {
+    font-size: 9px;
+    bottom: 8px;
   }
 }
